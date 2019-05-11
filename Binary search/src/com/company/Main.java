@@ -1,4 +1,4 @@
-// В первой строке даны целое число 1≤n≤10^5 и массив A[1…n] из n различных натуральных чисел, не превышающих 10^9,
+﻿// В первой строке даны целое число 1≤n≤10^5 и массив A[1…n] из n различных натуральных чисел, не превышающих 10^9,
 // в порядке возрастания, во второй — целое число 1≤k≤10^5 и k натуральных чисел b1,…,bk, не превышающих 10^9.
 // Для каждого i от 1 до k необходимо вывести индекс 1≤j≤n, для которого A[j]=bi, или −1, если такого j нет.
 
@@ -42,7 +42,7 @@ public class Main {
         for (int i = 0; i < length; i++){
             int value = in.nextInt();
             //System.out.print(binarySearchRecursion(arr, value, 0, n-1) +  " ");
-            out.print(binarySearchCycle(arr, value) + " ");
+            out.print(binarySearchLoop(arr, value) + " ");
         }
     }
 
@@ -59,7 +59,7 @@ public class Main {
         return 0;
     }
 
-    private static int binarySearchCycle(int[] arr, int value){
+    private static int binarySearchLoop(int[] arr, int value){
         int first = 0;
         int last = arr.length-1;
         while (first <= last){
