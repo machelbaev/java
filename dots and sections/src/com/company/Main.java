@@ -50,12 +50,12 @@ import java.util.Scanner;
 
             for (int i = 0; i < m; i++){
                 int num = in.nextInt();
-                System.out.println(binarySearchLeft(left, num) - binarySearchRight(right, num));
+                System.out.println(binarySearch(left, num)- binarySearch(right, num-1));
             }
 
         }
 
-        private static int binarySearchLeft(int[] arr, int value){
+        private static int binarySearch(int[] arr, int value){
             int first = 0;
             int last = arr.length-1;
             while (first <= last){
@@ -63,33 +63,12 @@ import java.util.Scanner;
                 if (arr[pos] <= value) {
                     if (value < arr[pos+1])
                         return pos;
-                    if (value > arr[pos+1])
-                        last = pos - 1;
-                    if (value == arr[pos+1])
+                    else
                         first = pos + 1;
                 }
                 else
-                    first = pos + 1;
-            }
-            return 0;
-        }
-
-        private static int binarySearchRight(int[] arr, int value){
-            int first = 0;
-            int last = arr.length-1;
-            while (first <= last){
-                int pos = (first + last)/2;
-                if (arr[pos] < value)
-                    if (value <= arr[pos+1])
-                        if (pos == arr.length-2)
-                            return 0;
-                        else
-                            return pos;
-                    else
-                        first = pos + 1;
-                else
                     last = pos - 1;
             }
-            return 0;
+            return first +1;
         }
 }
