@@ -1,30 +1,40 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
         //array to sort
-        int[] arr = CreateArray(1000000);
+        int[] arr = CreateArray(10000000);
 
+        //quick sort
         long start = System.currentTimeMillis();
-        new QuickSort().run(arr);
+        new QuickSort().run(arr.clone());
         long finish = System.currentTimeMillis();
-        System.out.println("Quick sort lasts " + (finish - start) + " ms");
+        System.out.println("Quick sort lasts in " + (finish - start) + " ms");
 
+        //merge sort
         start = System.currentTimeMillis();
-        new MergeSort().run(arr);
+        new MergeSort().run(arr.clone());
         finish = System.currentTimeMillis();
-        System.out.println("Merge sort lasts " + (finish - start) + " ms");
+        System.out.println("Merge sort lasts in " + (finish - start) + " ms");
 
+        //heap sort
         start = System.currentTimeMillis();
-        new HeapSort().run(arr);
+        new HeapSort().run(arr.clone());
         finish = System.currentTimeMillis();
-        System.out.println("Heap sort lasts " + (finish - start) + " ms");
+        System.out.println("Heap sort lasts in " + (finish - start) + " ms");
+
+        //java default array sort
+        start = System.currentTimeMillis();
+        Arrays.sort(arr.clone());
+        finish = System.currentTimeMillis();
+        System.out.println("Default sort lasts in " + (finish - start) + " ms");
     }
 
-    static Random rnd = new Random();
+    private static Random rnd = new Random();
 
     private static int[] CreateArray(int length){
         int[] arr = new int[length];
